@@ -1,4 +1,4 @@
-program part1
+program part2
     implicit none
 
     integer :: length
@@ -72,4 +72,4 @@ program part1
             .xor. (password(counter + ruleidx2:counter + ruleidx2) == rulechar)
     end function
 
-end program part1
+end program part2
