@@ -1,4 +1,4 @@
-# [Advent of Code 2020 Day 1](https://adventofcode.com/2020/day/1/)
+# [Advent of Code 2020 Day 1](https://adventofcode.com/2020/day/1)
 
 Written in [IntCode](https://esolangs.org/wiki/Intcode).
 
