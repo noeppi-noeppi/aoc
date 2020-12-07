@@ -1,4 +1,4 @@
-# [Advent of Code 2020 Day 6](https://adventofcode.com/2020/day/7)
+# [Advent of Code 2020 Day 7](https://adventofcode.com/2020/day/7)
 
 Written in [Swift](https://en.wikipedia.org/wiki/Swift_(programming_language)).
 
