@@ -7,3 +7,4 @@
   * [Day 5](day5/README.md): [Raku](https://en.wikipedia.org/wiki/Raku_(programming_language))
   * [Day 6](day6/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell_(programming_language))
   * [Day 7](day7/README.md): [Swift](https://en.wikipedia.org/wiki/Swift_(programming_language))
+  * [Day 8](day8/README.md): [Julia](https://en.wikipedia.org/wiki/Julia_(programming_language))
