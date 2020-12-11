@@ -10,3 +10,4 @@
   * [Day 8](day8/README.md): [Julia](https://en.wikipedia.org/wiki/Julia_(programming_language))
   * [Day 9](day9/README.md): [R](https://en.wikipedia.org/wiki/R_(programming_language))
   * [Day 10](day10/README.md): [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language))
+  * [Day 11](day11/README.md): [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language))
