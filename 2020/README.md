@@ -12,3 +12,4 @@
   * [Day 10](day10/README.md): [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language))
   * [Day 11](day11/README.md): [Rust](https://en.wikipedia.org/wiki/Rust_(programming_language))
   * [Day 12](day12/README.md): [Dart](https://en.wikipedia.org/wiki/Dart_(programming_language))
+  * [Day 13](day13/README.md): [Go](https://en.wikipedia.org/wiki/Go_(programming_language))
