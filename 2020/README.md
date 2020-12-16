@@ -15,3 +15,4 @@
   * [Day 13](day13/README.md): [Go](https://en.wikipedia.org/wiki/Go_(programming_language))
   * [Day 14](day14/README.md): [C++](https://en.wikipedia.org/wiki/C++)
   * [Day 15](day15/README.md): [C](https://en.wikipedia.org/wiki/C_(programming_language))
+  * [Day 16](day16/README.md): [Lua](https://en.wikipedia.org/wiki/Lua_(programming_language))
