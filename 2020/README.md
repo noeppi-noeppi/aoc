@@ -16,4 +16,4 @@
   * [Day 14](day14/README.md): [C++](https://en.wikipedia.org/wiki/C++)
   * [Day 15](day15/README.md): [C](https://en.wikipedia.org/wiki/C_(programming_language))
   * [Day 16](day16/README.md): [Lua](https://en.wikipedia.org/wiki/Lua_(programming_language))
-  * [Day 17](day17/README.md): [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
+  * [Day 17](day17/README.md): [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) and [WienerScript](https://github.com/pichsenmeister/WienerScript)
