@@ -10,8 +10,7 @@ while (<STDIN>) {
     chomp;
     if (/^(\d+)\s*:\s*(.*?)\s*$/) {
         $rules{$1} = $2
-    }
-    elsif ($_ ne "") {
+    } elsif ($_ ne "") {
         push @messages, $_
     }
 }
@@ -20,21 +19,17 @@ sub expandRule {
     $_ = $_[0];
     if ($_ eq "") {
         return ""
-    }
-    elsif (/^\s*"(.*?)"\s*$/) {
+    } elsif (/^\s*"(.*?)"\s*$/) {
         return $1
-    }
-    elsif (/^\s*([^|]+?)\s*[|]\s*([^|]+?)\s*$/) {
+    } elsif (/^\s*([^|]+?)\s*[|]\s*([^|]+?)\s*$/) {
         my $x1 = $1;
         my $x2 = $2;
         return "(" . expandRule($x1) . "|" . expandRule($x2) . ")"
-    }
-    elsif (/^\s*(\d+)((\s+\d+)*)\s*$/) {
+    } elsif (/^\s*(\d+)((\s+\d+)*)\s*$/) {
         my $x1 = $rules{$1};
         my $x2 = $2;
         return expandRule($x1) . expandRule($x2)
-    }
-    else {
+    } else {
         die "No match: " . $_
     }
 }
