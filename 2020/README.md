@@ -18,3 +18,4 @@
   * [Day 16](day16/README.md): [Lua](https://en.wikipedia.org/wiki/Lua_(programming_language))
   * [Day 17](day17/README.md): [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) and [WienerScript](https://github.com/pichsenmeister/WienerScript)
   * [Day 18](day18/README.md): [TuxCalculator](https://github.com/noeppi-noeppi/TuxCalculator)
+  * [Day 19](day19/README.md): [Perl](https://en.wikipedia.org/wiki/Perl)
