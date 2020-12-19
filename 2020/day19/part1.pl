@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 
-#use strict;
-#use warnings;
-
 my %rules = ();
 my @messages = [];
 

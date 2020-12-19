@@ -1,8 +1,5 @@
 #!/usr/bin/perl
 
-#use strict;
-#use warnings;
-
 my %rules = ();
 my @messages = [];
 
@@ -50,6 +47,8 @@ sub expandRule {
 }
 
 my $pattern = '^' . expandRule("0") . '$';
+
+print "$pattern\n";
 
 my $count = 0;
 foreach (@messages) {
