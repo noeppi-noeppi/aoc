@@ -19,7 +19,7 @@
   * [Day 17](day17/README.md): [bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) and [WienerScript](https://github.com/pichsenmeister/WienerScript)
   * [Day 18](day18/README.md): [TuxCalculator](https://github.com/noeppi-noeppi/TuxCalculator)
   * [Day 19](day19/README.md): [Perl](https://en.wikipedia.org/wiki/Perl)
-  * Day 20: We don't talk about this...
+  * [Day 20](day20/README.md): [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
   * [Day 21](day21/README.md): [TypeScript](https://en.wikipedia.org/wiki/TypeScript)
 
 ### Other sulutions
