@@ -22,7 +22,7 @@
   * [Day 20](day20/README.md): [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
   * [Day 21](day21/README.md): [TypeScript](https://en.wikipedia.org/wiki/TypeScript)
 
-### Other sulutions
+### Other Solutions
 
 | Name | Language |
 |:---:|:---:|
