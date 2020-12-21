@@ -40,7 +40,6 @@ sub MAIN() {
     }
 
     for ^1024 {
-        #  && @seats.contains($_ - 1) && @seats.contains($_ + 1)
         if (!@seats.contains($_) && @seats.contains($_ - 1) && @seats.contains($_ + 1)) {
             say "Found Seat: $_";
             return
