@@ -66,6 +66,79 @@ def find_match(coords: Tuple[int, int], possible: List[int], elems: Dict[Tuple[i
     else:
         return (-1, 0)
 
+
+def vflip(tile: List[str]) -> List[str]:
+    return tile[::-1]
+
+
+def hflip(tile: List[str]) -> List[str]:
+    new = []
+    for row in tile:
+        new.append(row[::-1])
+    return new
+
+
+def rotate(tile: List[str]) -> List[str]:
+    new = []
+    for x in range(0, len(tile)):
+        row = ''
+        for y in range(0, len(tile))[::-1]:
+            row += tile[y][x]
+        new.append(row)
+    return new
+
+
+def apply_transformations(tile: List[str], transform: int) -> List[str]:
+    new = tile.copy()
+    if (transform & (1 << 0)) != 0:
+        new = vflip(new)
+    if (transform & (1 << 1)) != 0:
+        new = hflip(new)
+    if (transform & (1 << 2)) != 0:
+        new = rotate(new)
+    return new
+
+
+def crop(tile: List[str]) -> List[str]:
+    new = []
+    for x in range(1, len(tile) - 1):
+        new.append(tile[x][1:-1])
+    return new
+
+
+def find_monsters(tile: List[str]) -> List[str]:
+    #                 1111111111
+    #       01234567890123456789
+    #   +----------------------- 
+    # 0 |                     # 
+    # 1 |   #    ##    ##    ###
+    # 2 |    #  #  #  #  #  #   
+
+    for y in range(len(tile)):
+        for x in range(len(tile[y])):
+            if x + 19 < len(tile[y]) and y + 2 < len(tile):
+                if tile[y][x + 18] in "#0" and tile[y + 1][x] in "#0" and tile[y + 1][x + 5] in "#0" \
+                  and tile[y + 1][x + 6] in "#0" and tile[y + 1][x + 11] in "#0" and tile[y + 1][x + 12] in "#0" \
+                  and tile[y + 1][x + 17] in "#0" and tile[y + 1][x + 18] in "#0" and tile[y + 1][x + 19] in "#0" \
+                  and tile[y + 2][x + 1] in "#0" and tile[y + 2][x + 4] in "#0" and tile[y + 2][x + 7] in "#0" \
+                  and tile[y + 2][x + 10] in "#0" and tile[y + 2][x + 13] in "#0" and tile[y + 2][x + 16] in "#0":
+                    tile[y] = tile[y][:x + 18] + '0' + tile[y][x + 19:]
+                    tile[y + 1] = tile[y + 1][:x] + '0' + tile[y + 1][x + 1:]
+                    tile[y + 1] = tile[y + 1][:x + 5] + '0' + tile[y + 1][x + 6:]
+                    tile[y + 1] = tile[y + 1][:x + 6] + '0' + tile[y + 1][x + 7:]
+                    tile[y + 1] = tile[y + 1][:x + 11] + '0' + tile[y + 1][x + 12:]
+                    tile[y + 1] = tile[y + 1][:x + 12] + '0' + tile[y + 1][x + 13:]
+                    tile[y + 1] = tile[y + 1][:x + 17] + '0' + tile[y + 1][x + 18:]
+                    tile[y + 1] = tile[y + 1][:x + 18] + '0' + tile[y + 1][x + 19:]
+                    tile[y + 1] = tile[y + 1][:x + 19] + '0' + tile[y + 1][x + 20:]
+                    tile[y + 2] = tile[y + 2][:x + 1] + '0' + tile[y + 2][x + 2:]
+                    tile[y + 2] = tile[y + 2][:x + 4] + '0' + tile[y + 2][x + 5:]
+                    tile[y + 2] = tile[y + 2][:x + 7] + '0' + tile[y + 2][x + 8:]
+                    tile[y + 2] = tile[y + 2][:x + 10] + '0' + tile[y + 2][x + 11:]
+                    tile[y + 2] = tile[y + 2][:x + 13] + '0' + tile[y + 2][x + 14:]
+                    tile[y + 2] = tile[y + 2][:x + 16] + '0' + tile[y + 2][x + 17:]
+    return tile
+
 first_tile = -1
 input: str = sys.stdin.read()
 tiles: Dict[int, List[str]] = {}
@@ -160,4 +233,32 @@ for coords in elems:
     maxy = max(maxy, coords[1])
     miny = min(miny, coords[1])
 
-print(elems[(minx, miny)][0] * elems[(minx, maxy)][0] * elems[(maxx, miny)][0] * elems[(maxx,maxy)][0])
+image: List[str] = []
+off = 0
+for y in range(miny, maxy + 1):
+    for _ in range(0, 8):
+        image.append('')
+
+    for x in range(minx, maxx + 1):
+        
+        print(f"({x - minx},{y - miny}): {elems[(x, y)][0]} at {elems[(x, y)][1]}")
+        
+        data = crop(apply_transformations(tiles[elems[(x, y)][0]], elems[(x, y)][1]))
+        for yd in range(0, 8):
+            image[off + yd] += data[yd]
+    off += 8
+
+for line in image:
+    print(line)
+
+min_amount = side_length * side_length * 64
+for i in range(0, 8):
+    image_copy = apply_transformations(image.copy(), i)
+    image_copy = find_monsters(image_copy)
+    amount = 0
+    for line in image_copy:
+        amount += line.count('#')
+    if (amount < min_amount):
+        min_amount = amount
+
+print(min_amount)
