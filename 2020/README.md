@@ -22,6 +22,7 @@
   * [Day 20](day20/README.md): [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
   * [Day 21](day21/README.md): [TypeScript](https://en.wikipedia.org/wiki/TypeScript)
   * [Day 22](day22/README.md): [Java](https://en.wikipedia.org/wiki/Java_(programming_language))
+  * [Day 23](day23/README.md): [Kotlin](https://en.wikipedia.org/wiki/Kotlin_(programming_language))
 
 ### Other Solutions
 
