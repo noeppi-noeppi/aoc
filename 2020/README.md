@@ -23,6 +23,7 @@
   * [Day 21](day21/README.md): [TypeScript](https://en.wikipedia.org/wiki/TypeScript)
   * [Day 22](day22/README.md): [Java](https://en.wikipedia.org/wiki/Java_(programming_language))
   * [Day 23](day23/README.md): [Kotlin](https://en.wikipedia.org/wiki/Kotlin_(programming_language))
+  * [Day 24](day24/README.md): [Groovy](https://en.wikipedia.org/wiki/Apache_Groovy)
 
 ### Other Solutions
 
