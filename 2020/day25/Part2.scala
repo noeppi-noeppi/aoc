@@ -2,10 +2,10 @@ import scala.io.StdIn
 
 object Part2 extends App {
 
-  println("\u001Bc")
+  print("\u001Bc")
   println("Click on \u001B[32;1m[Pay the Deposit]\u001B[0m. The press Enter")
   StdIn.readLine()
-  println("\u001Bc")
+  print("\u001Bc")
   println("You spend all \u001B[93;1mfifty stars\u001B[0m to cover the room deposit!")
   println()
   Thread.sleep(1000)
