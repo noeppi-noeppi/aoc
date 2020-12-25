@@ -24,6 +24,7 @@
   * [Day 22](day22/README.md): [Java](https://en.wikipedia.org/wiki/Java_(programming_language))
   * [Day 23](day23/README.md): [Kotlin](https://en.wikipedia.org/wiki/Kotlin_(programming_language))
   * [Day 24](day24/README.md): [Groovy](https://en.wikipedia.org/wiki/Apache_Groovy)
+  * [Day 25](day25/README.md): [Scala](https://en.wikipedia.org/wiki/Scala_(programming_language))
 
 ### Other Solutions
 

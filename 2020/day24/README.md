@@ -1,4 +1,4 @@
-# [Advent of Code 2020 Day 23](https://adventofcode.com/2020/day/23)
+# [Advent of Code 2020 Day 24](https://adventofcode.com/2020/day/24)
 
 Written in [Groovy](https://en.wikipedia.org/wiki/Apache_Groovy).
 
