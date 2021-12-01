@@ -1,7 +1,7 @@
 ; For lin64
-; nasm -felf64 -o part2.o part2.s
-; ld -o part2 part2.o
-; ./part2
+; nasm -felf64 -o part1.o part1.asm
+; ld -o part1 part1.o
+; ./part1
 
           global    _start
           default   rel
@@ -97,27 +97,19 @@ _oint_do_print:
           
 
 _start:
-          xor       r12, r12
-          call      _iint
-          mov       r10, r8
-          call      _iint
-          mov       r9, r8
+          xor       r10, r10
           call      _iint
 _start_next_int:
-          mov       r11, r10
-          mov       r10, r9
           mov       r9, r8
-          push      r11
           call      _iint
-          pop       r11
           test      r8, r8
           jz        _start_end
-          cmp       r8, r11
+          cmp       r8, r9
           jle       _start_next_int
-          add       r12, 1
+          add       r10, 1
           jmp       _start_next_int
 _start_end:
-          mov       r8, r12
+          mov       r8, r10
           call      _oint
           
           mov       rax, 60
