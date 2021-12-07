@@ -6,4 +6,5 @@
   * [Day 4](day04/README.md): [Pascal](https://en.wikipedia.org/wiki/Pascal_(programming_language))
   * [Day 5](day05/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
   * [Day 6](day06/README.md): [Clojure](https://en.wikipedia.org/wiki/Clojure)
+  * [Day 7](day07/README.md): [Paradoc](https://github.com/betaveros/paradoc)
   
