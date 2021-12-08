@@ -7,4 +7,5 @@
   * [Day 5](day05/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
   * [Day 6](day06/README.md): [Clojure](https://en.wikipedia.org/wiki/Clojure)
   * [Day 7](day07/README.md): [Paradoc](https://github.com/betaveros/paradoc)
+  * [Day 8](day08/README.md): [ZenScript](https://docs.blamejared.com/1.16/en/zencode/ZenCode)
   
