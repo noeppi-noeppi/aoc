@@ -9,4 +9,5 @@
   * [Day 7](day07/README.md): [Paradoc](https://github.com/betaveros/paradoc)
   * [Day 8](day08/README.md): [ZenScript](https://docs.blamejared.com/1.16/en/zencode/ZenCode)
   * [Day 9](day09/README.md): [Ada](https://en.wikipedia.org/wiki/Ada_(programming_language))
+  * [Day 10](day10/README.md): [Eiffel](https://en.wikipedia.org/wiki/Eiffel_(programming_language))
   
