@@ -15,5 +15,6 @@
   * [Day 13](day13/README.md): [Dafny](https://en.wikipedia.org/wiki/Dafny)
   * [Day 14](day14/README.md): [Objective C](https://en.wikipedia.org/wiki/Objective-C)
   * [Day 15](day15/README.md): [Zig](https://en.wikipedia.org/wiki/Zig_(programming_language))
-  * [Day 16](day15/README.md): [OCaml](https://en.wikipedia.org/wiki/OCaml)
+  * [Day 16](day16/README.md): [OCaml](https://en.wikipedia.org/wiki/OCaml)
+  * [Day 17](day17/README.md): [Erlang](https://en.wikipedia.org/wiki/Erlang_(programming_language))
   
