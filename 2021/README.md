@@ -17,4 +17,5 @@
   * [Day 15](day15/README.md): [Zig](https://en.wikipedia.org/wiki/Zig_(programming_language))
   * [Day 16](day16/README.md): [OCaml](https://en.wikipedia.org/wiki/OCaml)
   * [Day 17](day17/README.md): [Erlang](https://en.wikipedia.org/wiki/Erlang_(programming_language))
+  * [Day 18](day18/README.md): [V](https://vlang.io/)
   
