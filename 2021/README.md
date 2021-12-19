@@ -18,4 +18,5 @@
   * [Day 16](day16/README.md): [OCaml](https://en.wikipedia.org/wiki/OCaml)
   * [Day 17](day17/README.md): [Erlang](https://en.wikipedia.org/wiki/Erlang_(programming_language))
   * [Day 18](day18/README.md): [V](https://vlang.io/)
+  * [Day 19](day19/README.md): [Flix](https://en.wikipedia.org/wiki/Flix_(programming_language))
   
