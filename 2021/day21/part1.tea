@@ -1,0 +1,35 @@
+define read_start() {
+    define line [readln stdin]
+    define num [str-substring $line [+ 2 [str-last-index-of $line ":"]]]
+    is [string->int $num]
+}
+
+define pos1 [read_start]
+define pos2 [read_start]
+
+define current_player [== 0 0]
+define dice_rolled 0
+define score1 0
+define score2 0
+
+define roll_dice() {
+    set! dice_rolled [+ 1 $dice_rolled]
+    is [+ [% [- $dice_rolled 1] 100] 1]
+}
+
+define move_by(current; dice) {
+    is [+ [% [- [+ $current $dice] 1] 10] 1]
+}
+
+while { and [< $score1 1000] [< $score2 1000] } {
+    if { is $current_player } {
+        set! pos1 [move_by $pos1 [+ [roll_dice] [roll_dice] [roll_dice]]]
+        set! score1 [+ $score1 $pos1]
+    } {
+        set! pos2 [move_by $pos2 [+ [roll_dice] [roll_dice] [roll_dice]]]
+        set! score2 [+ $score2 $pos2]
+    }
+    set! current_player [not $current_player]
+}
+
+echo [* [min $score1 $score2] $dice_rolled]

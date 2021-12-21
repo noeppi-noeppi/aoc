@@ -20,4 +20,5 @@
   * [Day 18](day18/README.md): [V](https://vlang.io/)
   * [Day 19](day19/README.md): [Flix](https://en.wikipedia.org/wiki/Flix_(programming_language))
   * [Day 20](day20/README.md): [Nim](https://en.wikipedia.org/wiki/Nim_(programming_language))
+  * [Day 21](day21/README.md): [Tea](https://en.wikipedia.org/wiki/Tea_(programming_language))
   
