@@ -22,4 +22,5 @@
   * [Day 20](day20/README.md): [Nim](https://en.wikipedia.org/wiki/Nim_(programming_language))
   * [Day 21](day21/README.md): [Tea](https://en.wikipedia.org/wiki/Tea_(programming_language))
   * [Day 22](day22/README.md): [Vala](https://en.wikipedia.org/wiki/Vala_(programming_language))
+  * [Day 23](day23/README.md): [Haxe](https://en.wikipedia.org/wiki/Haxe)
   
