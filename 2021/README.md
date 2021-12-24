@@ -23,4 +23,5 @@
   * [Day 21](day21/README.md): [Tea](https://en.wikipedia.org/wiki/Tea_(programming_language))
   * [Day 22](day22/README.md): [Vala](https://en.wikipedia.org/wiki/Vala_(programming_language))
   * [Day 23](day23/README.md): [Haxe](https://en.wikipedia.org/wiki/Haxe)
+  * [Day 24](day24/README.md): [CoffeeScript](https://en.wikipedia.org/wiki/CoffeeScript)
   
