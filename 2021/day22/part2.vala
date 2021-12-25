@@ -21,13 +21,13 @@ void main() {
 }
 
 class Rule: Object {
-	public Cube cube;
-	public bool state;
+    public Cube cube;
+    public bool state;
 
     public Rule(int x1, int x2, int y1, int y2, int z1, int z2, bool state) {
         this.cube = new Cube(x1, x2 + 1, y1, y2 + 1, z1, z2 + 1);
         this.state = state;
-	}
+    }
 
     public static Rule? read() {
         string? line = stdin.read_line();
@@ -49,11 +49,11 @@ class Rule: Object {
 
 class Cube: Object {
     private int minX;
-	private int maxX;
-	private int minY;
-	private int maxY;
-	private int minZ;
-	private int maxZ;
+    private int maxX;
+    private int minY;
+    private int maxY;
+    private int minZ;
+    private int maxZ;
 
     private bool empty;
 
@@ -70,7 +70,7 @@ class Cube: Object {
         this.empty = this.minX >= this.maxX || this.minY >= this.maxY || this.minZ >= this.maxZ;
         this.splits = null;
         this.splitLen = 0;
-	}
+    }
 
     public ulong count() {
         if (this.empty) {

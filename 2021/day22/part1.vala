@@ -19,13 +19,13 @@ void main() {
 }
 
 class Rule: Object {
-	private int minX;
-	private int maxX;
-	private int minY;
-	private int maxY;
-	private int minZ;
-	private int maxZ;
-	private bool state;
+    private int minX;
+    private int maxX;
+    private int minY;
+    private int maxY;
+    private int minZ;
+    private int maxZ;
+    private bool state;
 
     public Rule(int x1, int x2, int y1, int y2, int z1, int z2, bool state) {
         this.minX = int.min(x1, x2).clamp(-51, 51);
@@ -35,7 +35,7 @@ class Rule: Object {
         this.minZ = int.min(z1, z2).clamp(-51, 51);
         this.maxZ = int.max(z1, z2).clamp(-51, 51);
         this.state = state;
-	}
+    }
 
     public static Rule? read() {
         string? line = stdin.read_line();
