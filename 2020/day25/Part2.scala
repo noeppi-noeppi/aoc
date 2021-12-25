@@ -3,7 +3,7 @@ import scala.io.StdIn
 object Part2 extends App {
 
   print("\u001Bc")
-  println("Click on \u001B[32;1m[Pay the Deposit]\u001B[0m. The press Enter")
+  println("Click on \u001B[32;1m[Pay the Deposit]\u001B[0m. Then press Enter")
   StdIn.readLine()
   print("\u001Bc")
   println("You spend all \u001B[93;1mfifty stars\u001B[0m to cover the room deposit!")
@@ -13,7 +13,7 @@ object Part2 extends App {
   println("maybe the resort has a chimney you can use...")
   println()
   Thread.sleep(1000)
-  println("Solution by noeppi_noeppi.")
+  println("Solutions by noeppi_noeppi.")
   println("")
   Thread.sleep(1000)
   println("\u001B[1mDay 1\u001B[0m: IntCode")

@@ -24,4 +24,4 @@
   * [Day 22](day22/README.md): [Vala](https://en.wikipedia.org/wiki/Vala_(programming_language))
   * [Day 23](day23/README.md): [Haxe](https://en.wikipedia.org/wiki/Haxe)
   * [Day 24](day24/README.md): [CoffeeScript](https://en.wikipedia.org/wiki/CoffeeScript)
-  
+  * [Day 25](day25/README.md): [HTML](https://en.wikipedia.org/wiki/HTML) / [JavaScript](https://en.wikipedia.org/wiki/JavaScript)

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head><title>AoC 2021 Day 25 Part 2</title></head>
+<style type="text/css">
+    .hidden { display: none; }
+</style>
+<script type="application/javascript">
+    function solve() {
+        document.getElementById('form').remove()
+        for (let i = 0; i < 30; i++) {
+            const idx = i
+            setTimeout(() => document.getElementById("x" + idx).classList.remove('hidden'), 1000 * idx)
+        }
+    }
+</script>
+<body>
+<form name="form" id="form">
+    <input type="button" value="[Remotely Start the Sleigh]" onclick="solve();">
+</form>
+<div id="display">
+    <span class="hidden" id="x0">You use all <span style="color: #AAAA00;">fifty stars</span> to boost the signal and remotely start the sleigh!<br></span>
+    <span class="hidden" id="x1">Now, you just have to find your way back to the surface...<br></span>
+    <span class="hidden" id="x2">...did you know crab submarines come with colored lights?<br></span>
+    <span class="hidden" id="x3"><br>Solutions by noeppi_noeppi.<br></span>
+    <span class="hidden" id="x4"><b>Day 1</b>: Netwide Assembler<br></span>
+    <span class="hidden" id="x5"><b>Day 2</b>: COBOL<br></span>
+    <span class="hidden" id="x6"><b>Day 3</b>: Smalltalk<br></span>
+    <span class="hidden" id="x7"><b>Day 4</b>: Pascal<br></span>
+    <span class="hidden" id="x8"><b>Day 5</b>: Prolog<br></span>
+    <span class="hidden" id="x9"><b>Day 6</b>: Clojure<br></span>
+    <span class="hidden" id="x10"><b>Day 7</b>: Paradoc<br></span>
+    <span class="hidden" id="x11"><b>Day 8</b>: ZenScript<br></span>
+    <span class="hidden" id="x12"><b>Day 9</b>: Ada<br></span>
+    <span class="hidden" id="x13"><b>Day 10</b>: Eiffel<br></span>
+    <span class="hidden" id="x14"><b>Day 11</b>: Dylan<br></span>
+    <span class="hidden" id="x15"><b>Day 12</b>: PHP<br></span>
+    <span class="hidden" id="x16"><b>Day 13</b>: Dafny<br></span>
+    <span class="hidden" id="x17"><b>Day 14</b>: Objective C<br></span>
+    <span class="hidden" id="x18"><b>Day 15</b>: Zig<br></span>
+    <span class="hidden" id="x19"><b>Day 16</b>: OCaml<br></span>
+    <span class="hidden" id="x20"><b>Day 17</b>: Erlang<br></span>
+    <span class="hidden" id="x21"><b>Day 18</b>: V<br></span>
+    <span class="hidden" id="x22"><b>Day 19</b>: Flix<br></span>
+    <span class="hidden" id="x23"><b>Day 20</b>: Nim<br></span>
+    <span class="hidden" id="x24"><b>Day 21</b>: Tea<br></span>
+    <span class="hidden" id="x25"><b>Day 22</b>: Vala<br></span>
+    <span class="hidden" id="x26"><b>Day 23</b>: Haxe<br></span>
+    <span class="hidden" id="x27"><b>Day 24</b>: CoffeeScript<br></span>
+    <span class="hidden" id="x28"><b>Day 25</b>: HTML/JavaScript<br></span>
+    <span class="hidden" id="x29">
+        <br>
+        <a href="https://adventofcode.com/2021" target="_blank">https://adventofcode.com/2021</a>
+        <br>
+        <a href="https://github.com/noeppi-noeppi/aoc/tree/master/2021" target="_blank">https://github.com/noeppi-noeppi/aoc/tree/master/2021</a>
+    </span>
+</div>
+</body>
+</html>

@@ -25,16 +25,3 @@
   * [Day 23](day23/README.md): [Kotlin](https://en.wikipedia.org/wiki/Kotlin_(programming_language))
   * [Day 24](day24/README.md): [Groovy](https://en.wikipedia.org/wiki/Apache_Groovy)
   * [Day 25](day25/README.md): [Scala](https://en.wikipedia.org/wiki/Scala_(programming_language))
-
-### Other Solutions
-
-| Name | Language |
-|:---:|:---:|
-| [derNiklaas](https://github.com/derNiklaas/AoC-2020) | [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) |
-| [andi_makes](https://github.com/andi-makes/aoc2020) | [C++](https://en.wikipedia.org/wiki/C++) |
-| [Joblo2213](https://github.com/joblo2213/AdventOfCode2020) | [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) |
-| [Gewi413](https://github.com/Gewi413/AdventOfCode) | [Kotlin](https://en.wikipedia.org/wiki/Kotlin_(programming_language)) |
-| [Syncopsta](https://github.com/syncopsta/aoc_2020) | [Python](https://en.wikipedia.org/wiki/Python_(programming_language)) |
-| [Trojaner](https://github.com/TrojanerHD/AdventofCode2020) | [TypeScript](https://en.wikipedia.org/wiki/TypeScript) ([Deno](https://en.wikipedia.org/wiki/Deno_(software))) |
-| [networkException](https://github.com/networkException/AdventOfCode) | [TypeScript](https://en.wikipedia.org/wiki/TypeScript) ([Node](https://en.wikipedia.org/wiki/Node.js)) |
-| [voruti](https://github.com/voruti/MyAoCSolutions) | [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) |
