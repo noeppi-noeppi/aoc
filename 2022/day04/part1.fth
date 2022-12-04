@@ -42,7 +42,7 @@ VARIABLE num
     
     buf 0 CELL * + @ buf 2 CELL * + @ <=
     buf 1 CELL * + @ buf 3 CELL * + @ >=
-    AND IF
+    AND OVER AND IF
       num @ 1 + num !
     ELSE
     buf 0 CELL * + @ buf 2 CELL * + @ >=
