@@ -5,3 +5,4 @@
   * [Day 3](day03/README.md): [m4](https://en.wikipedia.org/wiki/M4_(computer_language))
   * [Day 4](day04/README.md): [FORTH](https://en.wikipedia.org/wiki/Forth_(programming_language))
   * [Day 5](day05/README.md): [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly)
+  * [Day 6](day06/README.md): [INTERCAL](https://en.wikipedia.org/wiki/INTERCAL)
