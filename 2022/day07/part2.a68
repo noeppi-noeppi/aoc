@@ -1,0 +1,175 @@
+PROC len = (STRING str) INT: UPB str - LWB str + 1;
+
+PROC index_of = (STRING str, STRING find) INT:
+BEGIN
+  INT idx := -1;
+  FOR i FROM UPB str - UPB find + 1 BY -1 TO LWB str DO
+    IF str[i:i + UPB find - 1] = find THEN idx := i FI
+  OD;
+  idx
+END;
+
+PROC last_index_of = (STRING str, STRING find) INT:
+BEGIN
+  INT idx := -1;
+  FOR i FROM LWB str TO UPB str - UPB find + 1 DO
+    IF str[i:i + UPB find - 1] = find THEN idx := i FI
+  OD;
+  idx
+END;
+
+PROC concat = (STRING str1, STRING str2) STRING:
+BEGIN
+  IF str1 = "" THEN str2 ELIF str2 = "" THEN str1 ELSE
+    [LWB str1:len(str1) + len(str2)]CHAR str;
+    str[LWB str1:UPB str1] := str1;
+    str[UPB str1 + 1:] := str2;
+    str
+  FI
+END;
+
+PROC str_to_int = (STRING str) LONG INT:
+BEGIN
+  LONG INT num := 0;
+  FOR i FROM LWB str TO UPB str DO
+    INT chr := ABS str[i];
+    IF chr >= 48 AND chr <= 57 THEN
+      num := (num * 10) + (chr - 48)
+    FI
+  OD;
+  num
+END;
+
+PROC norm_path = (STRING path) STRING:
+BEGIN
+  STRING norm := concat("/", path);
+  
+  INT ds_idx := index_of(norm, "//");
+  WHILE ds_idx /= -1 DO
+    norm := concat(norm[:ds_idx], norm[ds_idx + 2:]);
+    ds_idx := index_of(norm, "//")
+  OD;
+  
+  INT up_idx := index_of(norm, "/..");
+  WHILE up_idx /= -1 DO
+    INT preup_idx = last_index_of(norm[:up_idx - 1],"/");
+    norm := concat(norm[:preup_idx - 1], norm[up_idx + 3:]);
+    up_idx := index_of(norm, "/..")
+  OD;
+  
+  IF len(norm) = 0 THEN norm := "/" FI;
+  IF len(norm) > 1 AND norm[UPB norm:UPB norm] = "/" THEN norm := norm[:UPB norm - 1] FI;
+  norm
+END;
+
+PROC res_path = (STRING path1, STRING path2) STRING:
+BEGIN
+  IF len(path2) = 0 THEN
+    norm_path(path1)
+  ELIF path2[LWB path2:LWB path2] = "/" THEN
+    norm_path(path2)
+  ELSE
+    norm_path(concat(concat(path1, "/"), path2))
+  FI
+END;
+
+MODE DIRECTORY = STRUCT(STRING path, LONG INT total_file_size, REF []STRING dirs);
+
+[512]REF DIRECTORY directories;
+INT next_dir_idx := 1;
+
+PROC add_dir = (STRING path, LONG INT total_file_size, []STRING dirs) VOID:
+BEGIN
+  BOOL has_not := TRUE;
+  FOR i FROM 1 TO next_dir_idx - 1 DO
+    IF (path OF directories[i]) = path THEN has_not := FALSE FI
+  OD;
+  IF has_not THEN
+    HEAP [UPB dirs - LWB dirs + 1]STRING the_dirs;
+    the_dirs := dirs;
+    directories[next_dir_idx] := HEAP DIRECTORY := (path, total_file_size, the_dirs);
+    next_dir_idx := next_dir_idx + 1
+  FI
+END;
+
+PROC get_dir = (STRING search_path) DIRECTORY:
+BEGIN
+  DIRECTORY found;
+  BOOL has_not := TRUE;
+  FOR i FROM 1 TO next_dir_idx - 1 DO
+    IF (path OF directories[i]) = search_path THEN has_not := FALSE; found := directories[i] FI
+  OD;
+  IF has_not THEN
+    HEAP [0]STRING empty_sub_dirs;
+    found := HEAP DIRECTORY := (search_path, 0, empty_sub_dirs)
+  FI;
+  found
+END;
+
+PROC size_dir = (STRING search_path) LONG INT:
+BEGIN
+  DIRECTORY found = get_dir(search_path);
+  LONG INT size := total_file_size OF found;
+  FOR i FROM LWB (dirs OF found) TO UPB (dirs OF found) DO
+    size := size + size_dir((dirs OF found)[i])
+  OD;
+  size
+END;
+
+STRING cwd := "/";
+LONG INT current_total_size := 0;
+[512]STRING current_sub_dirs;
+INT next_subdir_idx :=1;
+
+BOOL still_running := TRUE;
+BOOL in_extra_line := FALSE;
+STRING line := "";
+readf(($gl$, line));
+WHILE still_running DO
+  IF line[:1] = "$" THEN
+    IF line[3:4] = "cd" THEN
+      IF current_total_size > 0 OR next_subdir_idx > 1 THEN
+        [next_subdir_idx - 1]STRING the_sub_dirs;
+        the_sub_dirs := current_sub_dirs[:next_subdir_idx - 1];
+        add_dir(cwd, current_total_size, the_sub_dirs);
+        current_total_size := 0;
+        next_subdir_idx := 1
+      FI;
+      
+      cwd := res_path(cwd, line[6:])
+    FI
+  ELSE
+    IF line[1:3] = "dir" THEN
+      current_sub_dirs[next_subdir_idx] := res_path(cwd, line[5:]);
+      next_subdir_idx := next_subdir_idx + 1
+    ELSE
+      INT end_idx = index_of(line, " ");
+      LONG INT the_size := str_to_int(line[:end_idx - 1]);
+      current_total_size := current_total_size + the_size
+    FI
+  FI;
+  
+  IF in_extra_line THEN
+    still_running := FALSE
+  ELSE
+    readf(($gl$, line));
+    IF len(line) = 0 THEN
+      line := "$ cd /";
+      in_extra_line := TRUE
+    FI
+  FI
+OD;
+
+LONG INT total_size := size_dir("/");
+LONG INT free_size := 70000000 - total_size;
+LONG INT left_size := 30000000 - free_size;
+
+LONG INT result := 70000000;
+FOR i FROM 1 TO next_dir_idx - 1 DO
+  LONG INT size := size_dir(path OF directories[i]);
+  IF size >= left_size AND size < result THEN
+    result := size
+  FI
+OD;
+
+printf(($zzzzzzzzzzzdl$, result))

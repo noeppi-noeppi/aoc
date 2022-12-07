@@ -6,3 +6,4 @@
   * [Day 4](day04/README.md): [FORTH](https://en.wikipedia.org/wiki/Forth_(programming_language))
   * [Day 5](day05/README.md): [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly)
   * [Day 6](day06/README.md): [INTERCAL](https://en.wikipedia.org/wiki/INTERCAL)
+  * [Day 7](day07/README.md): [ALGOL 68](https://en.wikipedia.org/wiki/ALGOL_68)
