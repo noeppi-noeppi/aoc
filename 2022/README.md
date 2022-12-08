@@ -7,3 +7,4 @@
   * [Day 5](day05/README.md): [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly)
   * [Day 6](day06/README.md): [INTERCAL](https://en.wikipedia.org/wiki/INTERCAL)
   * [Day 7](day07/README.md): [ALGOL 68](https://en.wikipedia.org/wiki/ALGOL_68)
+  * [Day 8](day08/README.md): [APL](https://en.wikipedia.org/wiki/APL_(programming_language))
