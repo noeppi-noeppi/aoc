@@ -81,10 +81,10 @@ Move(DIR) {
 HasNoEntry(HARR, HVAL) {
     RESULT := 1
     for HIDX, HELEM in HARR {
-		if (HELEM == HVAL) {
+        if (HELEM == HVAL) {
             RESULT := 0
             Sleep, 0
         }
     }
-	return RESULT
+    return RESULT
 }
