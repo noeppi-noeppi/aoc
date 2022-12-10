@@ -186,5 +186,5 @@ Function nsInputPageLeave
     ${EndIf}
   ${Loop}
   
-    MessageBox MB_OK "$5"
+  MessageBox MB_OK "$5"
 FunctionEnd
