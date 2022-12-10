@@ -1,4 +1,4 @@
-# [Advent of Code 2022 Day 9](https://adventofcode.com/2022/day/9)
+# [Advent of Code 2022 Day 10](https://adventofcode.com/2022/day/10)
 
 Written in [Nullsoft Scriptable Install System](https://de.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System).
 
