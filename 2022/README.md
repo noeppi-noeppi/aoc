@@ -9,3 +9,4 @@
   * [Day 7](day07/README.md): [ALGOL 68](https://en.wikipedia.org/wiki/ALGOL_68)
   * [Day 8](day08/README.md): [APL](https://en.wikipedia.org/wiki/APL_(programming_language))
   * [Day 9](day09/README.md): [AutoHotkey](https://en.wikipedia.org/wiki/AutoHotkey)
+  * [Day 10](day10/README.md): [Nullsoft Scriptable Install System](https://de.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System)
