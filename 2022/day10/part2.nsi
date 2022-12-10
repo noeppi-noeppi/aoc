@@ -101,18 +101,18 @@ SectionEnd
 !macroend
 
 Function nsInputPage
-	nsDialogs::Create 1018
-	Pop $InputDialog
+    nsDialogs::Create 1018
+    Pop $InputDialog
   ${If} $InputDialog == error
-		Abort
-	${EndIf}
+        Abort
+    ${EndIf}
   ${NSD_CreateRichEdit} 0 13u 100% -13u "Enter input."
-	Pop $InputTextField
-	nsDialogs::Show
+    Pop $InputTextField
+    nsDialogs::Show
 FunctionEnd
 
 Function nsInputPageLeave
-	${NSD_GetText} $InputTextField $0
+    ${NSD_GetText} $InputTextField $0
   Push $0
   
   Push 1
@@ -186,5 +186,5 @@ Function nsInputPageLeave
     ${EndIf}
   ${Loop}
   
-	MessageBox MB_OK "$5"
+    MessageBox MB_OK "$5"
 FunctionEnd
