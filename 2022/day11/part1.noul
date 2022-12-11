@@ -1,0 +1,24 @@
+monkeys := for (monkey_str <- (read() split '\n\n')) yield (
+    lines := monkey_str split '\n';
+    items := lines[1][18:] split ', ' map int;
+    operation_str: = lines[2][19:];
+    operation := \old -> eval(operation_str);
+    div_by := lines[3][21:] then int;
+    monkey_a := lines[4][29:] then int;
+    monkey_b := lines[5][30:] then int;
+    target := \x -> if (x % div_by == 0) monkey_a else monkey_b;
+    [ items, operation, target, 0 ]
+);
+
+for (_ <- 1 to 20) for (idx, _ <<- monkeys) (
+    for (item <- monkeys[idx][0]) (
+        worry := monkeys[idx][1](item) // 3;
+        target := monkeys[idx][2](worry);
+        monkeys[idx][3] = monkeys[idx][3] + 1;
+        monkeys[target][0] = monkeys[target][0] ++ [ worry ];
+    );
+    monkeys[idx][0] = [];
+);
+
+active := (monkeys sort (>=< on \m -> m[3]))[:2];
+print(active map (\m -> m[3]) fold *)

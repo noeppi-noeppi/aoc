@@ -1,0 +1,28 @@
+monkeys := for (monkey_str <- (read() split '\n\n')) yield (
+    lines := monkey_str split '\n';
+    items := lines[1][18:] split ', ' map int;
+    operation_str: = lines[2][19:];
+    operation := \old -> eval(operation_str);
+    div_by := lines[3][21:] then int;
+    monkey_a := lines[4][29:] then int;
+    monkey_b := lines[5][30:] then int;
+    target := \x -> if (x % div_by == 0) monkey_a else monkey_b;
+    [ items, operation, div_by, target, 0 ]
+);
+
+lcm := \a, b -> a * b // gcd(a, b);
+div_all := monkeys map (\m -> m[2]) fold lcm;
+mul_all := monkeys map (\m -> m[2]) fold *;
+
+for (_ <- 1 to 10000) for (idx, _ <<- monkeys) (
+    for (item <- monkeys[idx][0]) (
+        worry := monkeys[idx][1](item) % div_all;
+        target := monkeys[idx][3](worry);
+        monkeys[idx][4] = monkeys[idx][4] + 1;
+        monkeys[target][0] = monkeys[target][0] ++ [ worry ];
+    );
+    monkeys[idx][0] = [];
+);
+
+active := (monkeys sort (>=< on \m -> m[4]))[:2];
+print(active map (\m -> m[4]) fold *)
