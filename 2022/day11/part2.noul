@@ -12,7 +12,6 @@ monkeys := for (monkey_str <- (read() split '\n\n')) yield (
 
 lcm := \a, b -> a * b // gcd(a, b);
 div_all := monkeys map (\m -> m[2]) fold lcm;
-mul_all := monkeys map (\m -> m[2]) fold *;
 
 for (_ <- 1 to 10000) for (idx, _ <<- monkeys) (
     for (item <- monkeys[idx][0]) (
