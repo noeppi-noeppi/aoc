@@ -12,3 +12,4 @@
   * [Day 10](day10/README.md): [Nullsoft Scriptable Install System](https://en.wikipedia.org/wiki/Nullsoft_Scriptable_Install_System)
   * [Day 11](day11/README.md): [noulith](https://github.com/betaveros/noulith)
   * [Day 12](day12/README.md): [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
+  * [Day 13](day13/README.md): [Racket](https://en.wikipedia.org/wiki/Racket_(programming_language))
