@@ -1,0 +1,236 @@
+public class part1 {
+
+    private static reader java/io/BufferedReader
+    private static cave [[Z
+
+    public static <clinit>()V {
+        new java/io/BufferedReader
+        dup
+        new java/io/InputStreamReader
+        dup
+        getstatic java/lang/System.in java/io/InputStream
+        invokespecial java/io/InputStreamReader.<init>(java/io/InputStream)V
+        invokespecial java/io/BufferedReader.<init>(java/io/Reader)V
+        putstatic part1.reader java/io/BufferedReader
+
+        ldc 1000
+        ldc 600
+        multianewarray [[Z, 2
+        putstatic part1.cave [[Z
+
+        return
+    }
+
+    private static readln()java/lang/String {
+        getstatic part1.reader java/io/BufferedReader
+        invokevirtual java/io/BufferedReader.readLine()java/lang/String
+        areturn
+    }
+
+    private static full(I,I)Z {
+        getstatic part1.cave [[Z
+        iload 0
+        aaload
+        iload 1
+        baload
+        ireturn
+    }
+
+    private static setfull(I,I)V {
+        getstatic part1.cave [[Z
+        iload 0
+        aaload
+        iload 1
+        ldc 1
+        bastore
+        return
+    }
+
+    private static setrect(I,I,I,I)V {
+        iload 0
+        iload 2
+        invokestatic java/lang/Math.min(I,I)I
+        iload 0
+        iload 2
+        invokestatic java/lang/Math.max(I,I)I
+        ldc 1
+        iadd
+        istore 2
+        istore 0
+
+        iload 1
+        iload 3
+        invokestatic java/lang/Math.min(I,I)I
+        iload 1
+        iload 3
+        invokestatic java/lang/Math.max(I,I)I
+        ldc 1
+        iadd
+        istore 3
+        dup
+        istore 1
+        istore 4
+
+        outer_loop:
+        iload 0
+        iload 2
+        if_icmpeq outer_end
+
+        inner_loop:
+        iload 1
+        iload 3
+        if_icmpeq inner_end
+        iload 0
+        iload 1
+        invokestatic part1.setfull(I,I)V
+        iinc 1,[1]
+        goto inner_loop
+        inner_end:
+        iload 4
+        istore 1
+        iinc 0,[1]
+        goto outer_loop
+        outer_end:
+        return
+    }
+
+    private static setrect(java/lang/String,java/lang/String)V {
+        aload 0
+        ldc ","
+        invokevirtual java/lang/String.split(java/lang/String)[java/lang/String
+        dup
+        ldc 0
+        aaload
+        invokestatic java/lang/Integer.parseInt(java/lang/String)I
+        istore 2
+        ldc 1
+        aaload
+        invokestatic java/lang/Integer.parseInt(java/lang/String)I
+        istore 3
+
+        aload 1
+        ldc ","
+        invokevirtual java/lang/String.split(java/lang/String)[java/lang/String
+        dup
+        ldc 0
+        aaload
+        invokestatic java/lang/Integer.parseInt(java/lang/String)I
+        istore 4
+        ldc 1
+        aaload
+        invokestatic java/lang/Integer.parseInt(java/lang/String)I
+        istore 5
+
+        iload 2
+        iload 3
+        iload 4
+        iload 5
+        invokestatic part1.setrect(I,I,I,I)V
+
+        return
+    }
+
+    private static setpath(java/lang/String)V {
+        aload 0
+        ldc " -> "
+        invokevirtual java/lang/String.split(java/lang/String)[java/lang/String
+        astore 1
+        ldc 1
+        istore 2
+        loop:
+        iload 2
+        aload 1
+        arraylength
+        if_icmpeq end
+        aload 1
+        iload 2
+        ldc 1
+        isub
+        aaload
+        aload 1
+        iload 2
+        aaload
+        invokestatic part1.setrect(java/lang/String,java/lang/String)V
+        iinc 2,[1]
+        goto loop
+        end:
+        return
+    }
+
+    private static sand()Z {
+        ldc 500
+        istore 0
+        ldc 0
+        istore 1
+        loop:
+        iload 1
+        ldc 599
+        if_icmplt step
+        ldc 0
+        ireturn
+        step:
+        iload 0
+        iload 1
+        ldc 1
+        iadd
+        invokestatic part1.full(I,I)Z
+        ifne nonstraight
+        iinc 1,[1]
+        goto loop
+        nonstraight:
+        iload 0
+        ldc 1
+        isub
+        iload 1
+        ldc 1
+        iadd
+        invokestatic part1.full(I,I)Z
+        ifne nonleft
+        iinc 0,[-1]
+        iinc 1,[1]
+        goto loop
+        nonleft:
+        iload 0
+        ldc 1
+        iadd
+        iload 1
+        ldc 1
+        iadd
+        invokestatic part1.full(I,I)Z
+        ifne nonright
+        iinc 0,[1]
+        iinc 1,[1]
+        goto loop
+        nonright:
+        iload 0
+        iload 1
+        invokestatic part1.setfull(I,I)V
+        ldc 1
+        ireturn
+    }
+
+    public static main([java/lang/String)V {
+        loop:
+        invokestatic part1.readln()java/lang/String
+        dup
+        ifnull end
+        invokestatic part1.setpath(java/lang/String)V
+        goto loop
+        end:
+        pop
+
+        ldc 0
+        istore 1
+        count:
+        invokestatic part1.sand()Z
+        ifeq count_end
+        iinc 1,[1]
+        goto count
+
+        count_end:
+        getstatic java/lang/System.out java/io/PrintStream
+        iload 1
+        invokevirtual java/io/PrintStream.println(I)V
+        return
+    }
+}

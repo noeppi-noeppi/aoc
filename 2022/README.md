@@ -13,3 +13,4 @@
   * [Day 11](day11/README.md): [noulith](https://github.com/betaveros/noulith)
   * [Day 12](day12/README.md): [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
   * [Day 13](day13/README.md): [Racket](https://en.wikipedia.org/wiki/Racket_(programming_language))
+  * [Day 14](day14/README.md): [jasm](https://github.com/roscopeco/jasm)
