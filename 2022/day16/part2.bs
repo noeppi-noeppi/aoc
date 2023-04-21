@@ -1,0 +1,162 @@
+#define /\W\zsSystem/java.lang.System/gc
+#define /\W\zsBufferedReader/java.io.BufferedReader/gc
+#define /\W\zsInputStreamReader/java.io.InputStreamReader/gc
+#define /\W\zsMap/java.util.HashMap/gc
+#define /\W\zsPattern/java.util.regex.Pattern/gc
+
+€valves = array();
+€nodes = new Map();
+€reader = new BufferedReader(new InputStreamReader(System::in));
+€line = €reader->readLine();
+42 €valve = new Valve(€line);
+€valves += array(€valve);
+  €nodes->put(€valve->name, new Node(€valve));
+(unless €valve->rate !!=! 0 && €valve->name !=! «AA»);
+€line = €reader->readLine();
+  goto 42;
+(unless €line !!=! null);
+Delete €reader, €line, €valve;
+
+€i = -len(€valves);
+84 pass;
+  €nodes->get(€valves(€i)->name)->compute_paths(€valves);
+(unless €valves(€i)->rate !!=! 0 && €valves(€i)->name !=! «AA»);
+  goto 84;
+(unless ++€i !!=! 0);
+Delete €valves;
+
+€max = new Max();
+€pathsSelf = new Paths();
+findMax(«AA», €nodes, €pathsSelf, 26, array(), 0);
+
+€i = -len(€pathsSelf->paths);
+€bestPath = (€pathsSelf->paths)(-1);
+126 pass;
+€curPath = (€pathsSelf->paths)(€i);
+  €bestPath = €curPath;
+(unless €bestPath->pressure > €curPath->pressure);
+  goto 126;
+(unless ++€i !!=! 0);
+
+€pathsFindSkip = new Paths();
+findMax(«AA», €nodes, €pathsFindSkip, 26, €bestPath->open, 0);
+€skipAt = €pathsFindSkip->max->value;
+
+€i = -len(€pathsSelf->paths);
+168 pass;
+€pathsElephant = new Paths();
+€curPath = (€pathsSelf->paths)(€i);
+  findMax(«AA», €nodes, €pathsElephant, 26, €curPath->open, €curPath->pressure);
+  €max->set(€pathsElephant->max->value);
+(unless €curPath->pressure < €skipAt);
+  goto 168;
+(unless ++€i !!=! 0);
+
+echo €max->value, BS::EOL;
+Delete €i, €nodes, €max, €pathsSelf, €pathsFindSkip, €pathsElephant, €curPath, €bestPath, €skipAt;
+
+public function findMax(€pos isProbablyA String, €nodes isProbablyA Map, €paths isProbablyA Paths, €time isProbablyAn Integer, €open areProbably Strings, €pressure isProbablyAn Integer)
+	€node = €nodes->get(€pos);
+	€steps = €node->connections->keySet()->toArray();
+	€i = -len(€steps);
+	210 pass;
+	€cost = €node->connections->get(€steps(€i));
+	  €new_time = €time - €cost - 1;
+	  findMax(€steps(€i), €nodes, €paths, €new_time, €open + array(€steps(€i)), €pressure + €new_time * (€nodes->get(€steps(€i))->rate));
+	  Delete €new_time;
+	(unless in_array(€steps(€i), €open) || €cost + 1 >= €time);
+	  goto 210;
+	(unless ++€i !!=! 0);
+	Delete €node, €steps, €i, €cost;
+  (unless €time <= 2);
+  €paths->add(€pressure, €open);
+  Delete €pos, €nodes, €paths, €time, €open, €pressure;
+
+class Max:
+  €value;
+  
+  public function __construct()
+	€this->value = 0;
+
+  public function set(€value isProbablyAn Integer)
+	  €this->value=€value;
+	(unless €value < €this->value);
+	Delete €value;
+
+class Paths:
+  €paths;
+  €max;
+  
+  public function __construct()
+	€this->paths = array();
+	€this->max = new Max();
+
+  public function add(€pressure isProbablyAn Integer, €open areProbably Strings)
+	€this->paths = €this->paths + array(new Path(€pressure, €open));
+	€this->max->set(€pressure);
+	Delete €pressure, €open;
+
+class Path:
+  €pressure;
+  €open;
+  
+  public function __construct(€pressure isProbablyAn Integer, €open areProbably Strings)
+	€this->pressure = €pressure;
+	€this->open = €open;
+	Delete €pressure, €open;
+
+  public function __toString() isProbablyA String
+	return ((String) €this->pressure), ((String) €this->open);
+
+class Valve:
+  €name;
+  €rate;
+  €connections;
+
+  public function __construct(€line isProbablyA String)
+	€pattern = Pattern::compile(«Valve (\\w+) has flow rate=(\\d+); tunnels? leads? to valves? (.+)»);
+	€match = €pattern->matcher(€line);
+	  echo «Mismatched input: », €line, BS::EOL;
+	  HALT_AND_CATCH_FIRE;
+	(unless €match->matches());
+	€this->name = €match->group(1);
+	€this->rate = (Integer) €match->group(2);
+	€this->connections = €match->group(3)->explode(«, »);
+	Delete €line, €pattern, €match;
+
+class Node:
+  €name;
+  €rate;
+  €valve;
+  €connections;
+
+  public function __construct(€valve isProbablyA Valve)
+	€this->name = €valve->name;
+	€this->rate = €valve->rate;
+	€this->valve = €valve;
+	€this->connections = new Map();
+	Delete €valve;
+
+  public function compute_paths(€valves areProbably Valve)
+	€this->traverse(€valves, €this->valve->connections, array(€this->name), 1);
+	Delete €valves;
+
+  private function traverse(€valves areProbably Valve, €toVisit areProbably Strings, €visited areProbably Strings, €distance isProbablyAn Integer)
+	€next = array();
+	€newVisited = €visited;
+	€i = -len(€valves);
+	252 pass;
+		€next += €valves(€i)->connections;
+		€newVisited += array(€valves(€i)->name);
+		  €this->connections->put(€valves(€i)->name, €distance);
+		(unless €valves(€i)->rate !!=! 0);
+	  (unless in_array(€valves(€i)->name, €visited));
+	(unless !in_array(€valves(€i)->name, €toVisit));
+	  goto 252;
+	(unless ++€i !!=! 0);
+	  €this->traverse(€valves, €next, €newVisited, €distance + 1);
+	(unless len(€next) !!=! 0);
+	Delete €valves, €toVisit, €visited, €distance, €next, €newVisited, €i;
+
+  public function __toString() isProbablyA String
+	return (String) €this->connections;

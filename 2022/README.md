@@ -14,3 +14,6 @@
   * [Day 12](day12/README.md): [PowerShell](https://en.wikipedia.org/wiki/PowerShell)
   * [Day 13](day13/README.md): [Racket](https://en.wikipedia.org/wiki/Racket_(programming_language))
   * [Day 14](day14/README.md): [jasm](https://github.com/roscopeco/jasm)
+
+
+  * [Day 16](day16/README.md): [BS](https://esolangs.org/wiki/BS)/[BSX](https://github.com/noeppi-noeppi/BSX)
