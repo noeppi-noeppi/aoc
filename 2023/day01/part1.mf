@@ -1,0 +1,25 @@
+string s, c[];
+numeric sum;
+sum = 0;
+forever:
+  s := readstring;
+  x0 := 0;
+  x1 := 0;
+  x9 := 0;
+  numeric i;
+  for i = 1 step 1 until length s:
+    c0 := substring (i-1,i) of s;
+    y0 := ASCII c0;
+    if y0 >= 48: if y0 < 58:
+      y1 := y0 - 48;
+      if x9 = 0:
+        x0 := y1;
+        x9 := 1;
+      fi
+      x1 := y1;
+    fi fi
+  endfor
+  x2 := 10 * x0 + x1;
+  sum := sum + x2 * epsilon;
+  if s="end": show sum; fi
+endfor
