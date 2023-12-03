@@ -1,0 +1,67 @@
+import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+type Main {
+    open static toInt(String string) -> Int {
+        mut let value = 0
+        for (mut let i = 0; i < string.length(); i++) {
+            value = value * 10
+            if (string.charAt(i) == '1'.charAt(0)) { value = value + 1 }
+            if (string.charAt(i) == '2'.charAt(0)) { value = value + 2 }
+            if (string.charAt(i) == '3'.charAt(0)) { value = value + 3 }
+            if (string.charAt(i) == '4'.charAt(0)) { value = value + 4 }
+            if (string.charAt(i) == '5'.charAt(0)) { value = value + 5 }
+            if (string.charAt(i) == '6'.charAt(0)) { value = value + 6 }
+            if (string.charAt(i) == '7'.charAt(0)) { value = value + 7 }
+            if (string.charAt(i) == '8'.charAt(0)) { value = value + 8 }
+            if (string.charAt(i) == '9'.charAt(0)) { value = value + 9 }
+        }
+        return value
+    }
+    open static digit(PrimitiveChar chr) -> Bool {
+        return chr == '0'.charAt(0) || chr == '1'.charAt(0) || chr == '2'.charAt(0) || chr == '3'.charAt(0) || chr == '4'.charAt(0) || chr == '5'.charAt(0) || chr == '6'.charAt(0) || chr == '7'.charAt(0) || chr == '8'.charAt(0) || chr == '9'.charAt(0)
+    }
+    open static surround(ArrayList<String> lines, Int y, Int xs, Int xe) -> ArrayList<String> {
+        ArrayList<String> chars = new ArrayList()
+        for (mut let i = y - 1; i <= (y + 1); i++) {
+            for (mut let j = xs - 1; j <= (xe + 1); j++) {
+                if (i >= 0 && i < (lines.size()) && j >= 0 && j < (lines.get(i).length())) {
+                    if (!digit(lines.get(i).charAt(j)) && lines.get(i).charAt(j) != ".".charAt(0)) {
+                        chars.add(lines.get(i).substring(j, j + 1))
+                    }
+                }
+            }
+        }
+        return chars
+    }
+}
+
+main {
+    let reader = new BufferedReader(new InputStreamReader(System.in))
+    ArrayList<String> lines = new ArrayList()
+    mut nil let line = reader.readLine()
+    while (line != Java.null()) {
+        lines.add(line)
+        line = reader.readLine()
+    }
+    mut let sum = 0
+    for (mut let y = 0; y < lines.size(); y++) {
+        for (mut let x = 0; x < lines.get(y).length(); x++) {
+            let chr = lines.get(y).charAt(x)
+            if (Main.digit(chr)) {
+                mut let len = 1
+                while ((x + len) < lines.get(y).length() && Main.digit(lines.get(y).charAt(x + len))) {
+                    len++
+                }
+                let num = Main.toInt(lines.get(y).substring(x, x + len))
+                let chars = Main.surround(lines, y, x, x + len - 1)
+                if (!chars.isEmpty()) {
+                    sum = sum + num
+                }
+                x = x + len - 1
+            }
+        }
+    }
+    log sum
+}
