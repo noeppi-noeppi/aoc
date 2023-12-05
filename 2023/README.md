@@ -4,3 +4,4 @@
   * [Day 2](day02/README.md): [awk](https://en.wikipedia.org/wiki/AWK)
   * [Day 3](day03/README.md): [Panda](https://github.com/panda-lang/panda)
   * [Day 4](day04/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 5](day05/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
