@@ -5,3 +5,5 @@
   * [Day 3](day03/README.md): [Panda](https://github.com/panda-lang/panda)
   * [Day 4](day04/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 5](day05/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 6](day06/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 7](day07/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
