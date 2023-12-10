@@ -9,3 +9,4 @@
   * [Day 7](day07/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 8](day08/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 9](day09/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 10](day10/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
