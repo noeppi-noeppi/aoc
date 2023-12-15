@@ -14,3 +14,4 @@
   * [Day 12](day12/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 13](day13/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 14](day14/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 15](day15/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
