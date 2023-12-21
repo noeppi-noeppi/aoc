@@ -20,3 +20,4 @@
   * [Day 18](day18/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 19](day19/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 20](day20/README.md): [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language))
+  * [Day 21](day21/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
