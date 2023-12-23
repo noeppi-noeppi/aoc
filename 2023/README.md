@@ -22,3 +22,4 @@
   * [Day 20](day20/README.md): [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language))
   * [Day 21](day21/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 22](day22/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 23](day23/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
