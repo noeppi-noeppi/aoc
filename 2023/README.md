@@ -23,3 +23,4 @@
   * [Day 21](day21/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 22](day22/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
   * [Day 23](day23/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
+  * [Day 24](day24/README.md): [Haskell](https://en.wikipedia.org/wiki/Haskell)
