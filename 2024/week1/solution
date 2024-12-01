@@ -1,0 +1,155 @@
+          global    main
+          extern    malloc
+          extern    printf
+          extern    scanf
+          default   rel
+          
+          section   .text
+
+main:
+          push      rbp
+          mov       rdi, 8192
+          xor       rax, rax
+          call      malloc WRT ..plt
+          mov       r12, rax
+          pop       rbp
+          
+          push      rbp
+          mov       rdi, 8192
+          xor       rax, rax
+          call      malloc WRT ..plt
+          mov       r13, rax
+          pop       rbp
+          
+          xor       r14, r14
+          mov       [arg_a], r14
+          mov       [arg_b], r14
+          
+input_loop:
+          push      rbp
+          mov       rdi, scanf_format
+          mov       rsi, arg_a
+          mov       rdx, arg_b
+          xor       rax, rax
+          call      scanf WRT ..plt
+          pop       rbp
+          cmp       eax, 0
+          jle       input_loop_end
+
+          mov       rax, [arg_a]
+          mov       [r12 + r14*8], rax
+          mov       rax, [arg_b]
+          mov       [r13 + r14*8], rax
+
+          inc       r14
+          jmp       input_loop
+input_loop_end:
+
+          xor       r15, r15
+          xor       rcx, rcx
+t2_compute_loop:
+          mov       rdi, [r12 + rcx*8]
+
+          xor       rbx, rbx
+          xor       rdx, rdx
+t2_count_loop:
+          mov       rsi, [r13 + rbx*8]
+          cmp       rdi, rsi
+          jne       t2_count_loop_cont
+          inc       rdx
+
+t2_count_loop_cont:
+          inc       rbx
+          cmp       ebx, r14d
+          jl        t2_count_loop
+
+          mov       rax, rdi
+          mul       rdx
+          add       r15, rax
+
+          inc       rcx
+          cmp       ecx, r14d
+          jl        t2_compute_loop
+
+          mov       [t2], r15
+
+          xor       r15, r15
+t1_compute_loop:
+          mov       r8, 2147483647
+          mov       r9, 2147483647
+          xor       r10, r10
+          xor       r11, r11
+          xor       rbx, rbx
+t1_find_smallest_loop:
+
+          mov       rdi, [r12 + rbx*8]
+          cmp       edi, 0
+          jz        t1_find_smallest_test_a_end
+          cmp       edi, r8d
+          jg        t1_find_smallest_test_a_end
+          mov       r8, rdi
+          mov       r10, rbx
+t1_find_smallest_test_a_end:
+
+          mov       rdi, [r13 + rbx*8]
+          cmp       edi, 0
+          jz        t1_find_smallest_test_b_end
+          cmp       edi, r9d
+          jg        t1_find_smallest_test_b_end
+          mov       r9, rdi
+          mov       r11, rbx
+t1_find_smallest_test_b_end:
+
+          inc       ebx
+          cmp       ebx, r14d
+          jl        t1_find_smallest_loop
+
+          cmp       r8, 2147483647
+          je        done
+
+          sub       r8, r9
+          mov       r9, r8
+          cmp       r8, 0
+          jge       t1_compute_non_negative
+          mov       r8, 0
+          sub       r8, r9
+t1_compute_non_negative:
+          add       r15, r8
+          xor       rax, rax
+          mov       [r12 + r10*8], rax
+          mov       [r13 + r11*8], rax
+
+          jmp       t1_compute_loop
+
+done:
+          push      rbp
+          mov       rdi, printf_format
+          mov       rsi, r15
+          call      printf WRT ..plt
+          pop       rbp
+
+          mov       rax, [t2]
+          push      rbp
+          mov       rdi, printf_format
+          mov       rsi, rax
+          call      printf WRT ..plt
+          pop       rbp
+
+          xor       rax, rax
+          ret
+
+
+          section .bss
+arg_a:
+          resb 8
+arg_b:
+          resb 8
+t2:
+          resb 8
+
+
+          section .data
+scanf_format:
+          db '%d   %d', 0
+printf_format:
+          db '%d', 10, 0
