@@ -1,3 +1,73 @@
+%if 0
+\def\unless#1{#1\else\expandafter\expandafter\fi\iffalse\iftrue\fi}
+\def\nil{}
+\def\sp{ }
+
+\newcount\acc
+\newcount\aux
+\def\nextnum#1 {\acc=#1\relax\do\loopnum}
+\def\doloop{\ifx\nextsym|\relax\else\expandafter\nextnum\fi}
+\def\loopnum{\futurelet\nextsym\doloop}
+
+\newread\aocinput
+\openin\aocinput=aocinput.txt
+%\openin\aocinput=testinput.txt
+\newcount\resultA
+\newcount\resultB
+\newcount\leaveoff
+\newcount\last
+\newif\ifraise
+\newif\iffall
+\newif\ifeq
+\newif\ifvalid
+
+\def\testv#1{
+  \eqfalse\raisetrue\falltrue\relax
+  \def\do{\last=\acc\def\do{\ifnum\acc=\last\eqtrue\fi\last=\acc}}
+  \expandafter\expandafter\expandafter\loopnum\expandafter#1|\relax
+  \def\do{\last=\acc\def\do{\ifnum\acc<\last\raisefalse\else\aux=\acc\advance\aux by -3\relax\ifnum\aux>\last\raisefalse\fi\fi\last=\acc}}
+  \expandafter\expandafter\expandafter\loopnum\expandafter#1|\relax
+  \def\do{\last=\acc\def\do{\ifnum\acc>\last\fallfalse\else\aux=\acc\advance\aux by 3\relax\ifnum\aux<\last\fallfalse\fi\fi\last=\acc}}
+  \expandafter\expandafter\expandafter\loopnum\expandafter#1|\relax
+  \ifeq\else\ifraise\validtrue\else\iffall\validtrue\fi\fi\fi
+}
+
+\def\buildlv#1#2{
+  \xdef#1{}
+  \def\do{\ifnum\leaveoff=0\else\xdef#1{#1\the\acc\sp}\fi\advance\leaveoff by -1\relax}
+  \expandafter\expandafter\expandafter\loopnum\expandafter#2|\relax
+}
+
+\def\chkall#1{
+  \leaveoff=0\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=1\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=2\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=3\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=4\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=5\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=6\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=7\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=8\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+  \leaveoff=9\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
+}
+
+\loop\unless{\ifeof\aocinput}
+  \endlinechar=-1\relax
+  \read\aocinput to \aoc
+  \ifx\aoc\nil\else
+    \edef\aoc{\aoc\sp}
+    \validfalse\relax\testv\aoc
+    \ifvalid\advance\resultA by 1\fi
+    \validfalse\relax\chkall\aoc
+    \ifvalid\advance\resultB by 1\fi
+  \fi
+\repeat
+\closein\aocinput
+\showthe\resultA
+\showthe\resultB
+
+\bye
+%endif
           global    main
           extern    malloc
           extern    printf
