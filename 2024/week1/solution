@@ -1,4 +1,8 @@
+;\long\def\skip#1|{}\skip
+#|
 %if 0
+\output={\setbox0=\box255\deadcycles=0}
+
 \def\unless#1{#1\else\expandafter\expandafter\fi\iffalse\iftrue\fi}
 \def\nil{}
 \def\sp{ }
@@ -11,7 +15,6 @@
 
 \newread\aocinput
 \openin\aocinput=aocinput.txt
-%\openin\aocinput=testinput.txt
 \newcount\resultA
 \newcount\resultB
 \newcount\leaveoff
@@ -223,3 +226,30 @@ scanf_format:
           db '%d   %d', 0
 printf_format:
           db '%d', 10, 0
+
+%if 0
+|#
+
+#lang racket
+
+(require srfi/1)
+
+(define (read-nonempty) (match (read-line) ["" (read-nonempty)] [line line]))
+(define (read-lines) (match (read-nonempty) [line (if (equal? line eof)
+  ""
+  (string-append line "\n" (read-lines))
+)]))
+
+(define (elem-mul groups) (* (string->number (car groups)) (string->number (car (cdr groups)))))
+(define (entry-mul entry) (elem-mul (cdr (regexp-match "mul\\(([0-9]+),([0-9]+)\\)" entry))))
+(define (text-mul text) (apply + (map entry-mul (regexp-match* "mul\\(([0-9]+),([0-9]+)\\)" text))))
+(define (text-cond-mul text) (text-mul (regexp-replace* "don't\\(\\).*?(do\\(\\)|$)" text "|")))
+(define (solution text) (cons (text-mul text) (cons (text-cond-mul text) null)))
+
+(write (solution (read-lines)))
+(display "\n")
+
+#;("
+%endif
+;")
+
