@@ -1,6 +1,87 @@
-;\long\def\skip#1|{}\skip
+;"\edef\notused"#1{}\long\def\skip#1^^B{}\catcode1=0\catcode92=12^^Acatcode35=12^^Acatcode123=12^^Acatcode125=12^^Askip
+;"
 #|
 %if 0
+";
+grid = String[]
+global line = chomp(readline());
+while line != ""
+  global line
+  push!(grid, line)
+  global line = chomp(readline());
+end
+
+function el(x, y)
+  global grid
+  if y <= 0 || y > length(grid)
+    return ' '
+  elseif x <= 0 || x > length(grid[y])
+    return ' '
+  else
+    return grid[y][x]
+  end
+end
+
+function isXMAS(x, y, dx, dy)
+  return el(x, y) == 'X' && el(x + dx, y + dy) == 'M' && el(x + 2*dx, y + 2*dy) == 'A' && el(x + 3*dx, y + 3*dy) == 'S'
+end
+
+function isMASMAS(x, y, dx1, dy1, dx2, dy2)
+  el(x, y) == 'A' && el(x - dx1, y - dy1) == 'M' && el(x - dx2, y - dy2) == 'M' && el(x + dx1, y + dy1) == 'S' && el(x + dx2, y + dy2) == 'S'
+end
+
+function findXMAS(dx, dy)
+  acc = 0
+  for y in 1:length(grid)
+    for x in 1:length(grid[y])
+      if isXMAS(x, y, dx, dy)
+        acc += 1
+      end
+    end
+  end
+  return acc
+end
+
+function findMASMAS(dx1, dy1, dx2, dy2)
+  acc = 0
+  for y in 1:length(grid)
+    for x in 1:length(grid[y])
+      if isMASMAS(x, y, dx1, dy1, dx2, dy2)
+        acc += 1
+      end
+    end
+  end
+  return acc
+end
+
+function countXMAS()
+  acc = 0
+  acc += findXMAS( 0, -1)
+  acc += findXMAS( 0,  1)
+  acc += findXMAS(-1,  0)
+  acc += findXMAS( 1,  0)
+  acc += findXMAS(-1, -1)
+  acc += findXMAS(-1,  1)
+  acc += findXMAS( 1, -1)
+  acc += findXMAS( 1,  1)
+  return acc
+end
+
+function countMASMAS()
+  acc = 0
+  acc += findMASMAS(-1, -1, -1,  1)
+  acc += findMASMAS( 1,  1,  1, -1)
+  acc += findMASMAS( 1,  1, -1,  1)
+  acc += findMASMAS(-1, -1,  1, -1)
+  return acc
+end
+
+println(countXMAS())
+println(countMASMAS())
+
+exit()
+
+^^B^^Acatcode92=0^^Acatcode1=12\catcode35=6\catcode123=1\catcode125=2\relax
 \output={\setbox0=\box255\deadcycles=0}
 
 \def\unless#1{#1\else\expandafter\expandafter\fi\iffalse\iftrue\fi}
