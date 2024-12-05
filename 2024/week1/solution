@@ -1,8 +1,94 @@
-;"\edef\notused"#1{}\long\def\skip#1^^B{}\catcode1=0\catcode92=12^^Acatcode35=12^^Acatcode123=12^^Acatcode125=12^^Askip
+;"\edef\notused"#1{}\long\def\skip#1^^B{}\catcode1=0\catcode92=12^^Acatcode35=12^^Askip
 ;"
 #|
 %if 0
 ";
+#=
+rules = []
+prints = []
+line = gets
+until line == nil || line.chomp.empty?
+  rules << line.chomp.split("|", 2).map(&:to_i)
+  line = gets
+end
+line = gets
+until line == nil || line.chomp.empty?
+  prints << line.chomp.split(",").map(&:to_i)
+  line = gets
+end
+
+def valid_step(rules, a, b)
+  is_valid = true
+  rules.each do |rule|
+    if b == rule[0] && a == rule[1]
+      is_valid = false
+    end
+  end
+  return is_valid
+end
+
+def valid_print(rules, print)
+  is_valid = true
+  (0...(print.length - 1)).each do |idxA|
+    ((idxA + 1)...(print.length)).each do |idxB|
+      if not valid_step(rules, print[idxA], print[idxB])
+        is_valid = false
+      end
+    end
+  end
+  return is_valid
+end
+
+def middle_value(print)
+  return print[print.length / 2]
+end
+
+def fill_order(rules, el, d, f, nx)
+  d[el] = nx[0]
+  nx[0] += 1
+  rules.each do |rule|
+    if rule[0] == el && d[rule[1]] == -1
+      fill_order(rules, rule[1], d, f, nx)
+    end
+  end
+  f[el] = nx[1]
+  nx[1] += 1
+end
+
+def order_print(rules, print)
+  relevant_rules = []
+  rules.each do |rule|
+    if (print.include? rule[0]) && (print.include? rule[1])
+      relevant_rules << rule
+    end
+  end
+  d = [-1] * 100
+  f = [-1] * 100
+  nx = [0, 0]
+  print.each do |idx|
+    if d[idx] == -1
+      fill_order(relevant_rules, idx, d, f, nx)
+    end
+  end
+  return print.sort { |a, b| f[b] <=> f[a] }
+end
+
+resultA = 0
+resultB = 0
+prints.each do |print|
+  if valid_print(rules, print)
+    resultA += middle_value(print)
+  else
+    sorted_print = order_print(rules, print)
+    resultB += middle_value(sorted_print)
+  end
+end
+
+puts resultA.to_s
+puts resultB.to_s
+
+__END__
+=#
 grid = String[]
 global line = chomp(readline());
 while line != ""
