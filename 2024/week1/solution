@@ -4,6 +4,58 @@
 %if 0
 ";
 #=
+=begin
+=cut
+use strict;
+use warnings;
+
+sub simulate {
+  my ($gridref, $x, $y, $dx, $dy) = @_;
+  my %grid = %$gridref;
+  my %visited;
+  my %visited_dirs;
+  while (exists $grid{$x, $y}) {
+    return -1 if exists $visited_dirs{$x, $y, $dx, $dy};
+    $visited{$x, $y} = 1;
+    $visited_dirs{$x, $y, $dx, $dy} = 1;
+    ($dx, $dy) = ($dx ? 0 : -$dy, $dy ? 0 : $dx) while $grid{$x + $dx, $y + $dy};
+    $x += $dx;
+    $y += $dy;
+  }
+  return scalar(keys %visited);
+}
+
+my %grid;
+my ($x, $y, $dx, $dy, $mx, $my);
+$mx = 1;
+while (my $line = <>) {
+  my @chars = split //, $line;
+  while (my ($idx, $char) = each @chars) {
+    $grid{$idx, $. - 1} = 0 if $char eq '.';
+    $grid{$idx, $. - 1} = 1 if $char eq '#';
+    ($grid{$idx, $. - 1}, $x, $y, $dx, $dy) = (0, $idx, $. - 1,  0, -1) if $char eq '^';
+    ($grid{$idx, $. - 1}, $x, $y, $dx, $dy) = (0, $idx, $. - 1,  0,  1) if $char eq 'v';
+    ($grid{$idx, $. - 1}, $x, $y, $dx, $dy) = (0, $idx, $. - 1, -1,  0) if $char eq '<';
+    ($grid{$idx, $. - 1}, $x, $y, $dx, $dy) = (0, $idx, $. - 1,  1,  0) if $char eq '>';
+    $mx = $idx > $mx ? $idx : $mx;
+  }
+}
+$my = $. - 1;
+
+print simulate(\%grid, $x, $y, $dx, $dy) . "\n";
+
+my $loop_count = 0;
+for my $nx (0 .. $mx) {
+  for my $ny (0 .. $my) {
+    next if $nx == $x && $ny == $y;
+    my %new_grid = %grid;
+    $new_grid{$nx, $ny} = 1;
+    $loop_count += 1 if simulate(\%new_grid, $x, $y, $dx, $dy) == -1;
+  }
+}
+print "$loop_count\n";
+__END__
+=end
 rules = []
 prints = []
 line = gets
