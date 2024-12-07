@@ -1,5 +1,6 @@
-;"\edef\notused"#1{}\long\def\skip#1^^B{}\catcode1=0\catcode92=12^^Acatcode35=12^^Askip
-;"
+;//;"\edef\notused"#1{}\long\def\skip#1^^B{}\catcode1=0\catcode92=12^^Acatcode35=12^^Askip
+;//;"
+;/*
 #|
 %if 0
 ";
@@ -222,7 +223,7 @@ exit()
 ^^B^^Acatcode92=0^^Acatcode1=12\catcode35=6\catcode123=1\catcode125=2\relax
 \output={\setbox0=\box255\deadcycles=0}
 
-\def\unless#1{#1\else\expandafter\expandafter\fi\iffalse\iftrue\fi}
+\def\ifnot#1{#1\else\expandafter\expandafter\fi\iffalse\iftrue\fi}
 \def\nil{}
 \def\sp{ }
 
@@ -273,7 +274,7 @@ exit()
   \leaveoff=9\relax\buildlv\aocn\aoc\relax\testv\aocn\relax
 }
 
-\loop\unless{\ifeof\aocinput}
+\loop\ifnot{\ifeof\aocinput}
   \endlinechar=-1\relax
   \read\aocinput to \aoc
   \ifx\aoc\nil\else
@@ -289,6 +290,54 @@ exit()
 \showthe\resultB
 
 \bye
+*/
+public class solution {
+    
+    public static void main(String[] args) throws Exception {
+        byte[] bytes = System.in.readAllBytes();
+        String input = new String(bytes);
+        String[] lines = input.split("\n");
+        record Entry(long result, long[] operands) {}
+        Entry[] entries = new Entry[lines.length];
+        for (int i = 0; i < lines.length; i++) {
+            String[] lineParts = lines[i].split(":?\\s+");
+            long result = Long.parseLong(lineParts[0]);
+            long[] operands = new long[lineParts.length - 1];
+            for (int j = 0; j < operands.length; j++) {
+                operands[operands.length - j - 1] = Long.parseLong(lineParts[j + 1]);
+            }
+            entries[i] = new Entry(result, operands);
+        }
+        long result1 = 0;
+        long result2 = 0;
+        for (Entry entry : entries) {
+            if (canBeTrue(entry.result(), entry.operands(), 0, false)) {
+                result1 += entry.result();
+            }
+            if (canBeTrue(entry.result(), entry.operands(), 0, true)) {
+                result2 += entry.result();
+            }
+        }
+        System.out.println(result1);
+        System.out.println(result2);
+    }
+    
+    private static boolean canBeTrue(long result, long[] operands, int off, boolean concat) {
+        if (off >= operands.length) return result == 0;
+        if (result <= 0) return false;
+        if (canBeTrue(result - operands[off], operands, off + 1, concat)) return true;
+        if (result % operands[off] == 0 && canBeTrue(result / operands[off], operands, off + 1, concat)) return true;
+        if (concat) {
+            long len = Long.toString(operands[off]).length();
+            long exp = Math.round(Math.pow(10, len));
+            if ((result - operands[off]) % exp == 0) {
+                return canBeTrue(result / exp, operands, off + 1, true);
+            }
+        }
+        return false;
+    }
+}
+/*
 %endif
           global    main
           extern    malloc
@@ -471,4 +520,4 @@ printf_format:
 #;("
 %endif
 ;")
-
+;*/
