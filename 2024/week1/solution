@@ -290,7 +290,7 @@ exit()
 \showthe\resultB
 
 \bye
-*/
+/**/
 public class solution {
     
     public static void main(String[] args) throws Exception {
@@ -336,6 +336,57 @@ public class solution {
         }
         return false;
     }
+    
+    private static final String ignored = """
+    */
+import scala.io.Source
+import Function.tupled
+
+object Main extends App {
+    case class Position(x: Int, y: Int) {
+        def +(other: Position): Position = Position(x + other.x, y + other.y)
+        def -(other: Position): Position = Position(x - other.x, y - other.y)
+        def *(factor: Int): Position = Position(factor * x, factor * y)
+    }
+    
+    val (antennas: Map[Char, Set[Position]], gridSize: Position) = {
+        def cellPosition(y: Int)(frequency: Char, x: Int): Option[(Char, Position)] = frequency match {
+            case '.' => None
+            case _ => Some((frequency, Position(x, y)))
+        }
+        def linePositions(line: String, y: Int): Seq[(Char, Position)] = line.zipWithIndex.flatMap(tupled(cellPosition(y)))
+        def gridPositions(lines: Seq[String]): Seq[(Char, Position)] = lines.zipWithIndex.flatMap(tupled(linePositions))
+        
+        val input = Source.stdin.getLines().toSeq
+        val antennas = gridPositions(input).groupMap(_._1)(_._2).view.mapValues(_.toSet).toMap
+        val gridSize = Position(input.map(_.length).maxOption.getOrElse(0), input.size)
+        (antennas, gridSize)
+    }
+  
+    def select2[T](elements: Set[T]): Iterable[(T, T)] = elements.flatMap(fst => elements.filter(_ != fst).map(snd => (fst, snd)))
+    def inGrid(pos: Position): Boolean = pos.x >= 0 && pos.x < gridSize.x && pos.y >= 0 && pos.y < gridSize.y
+  
+    val antiNodes: Set[Position] = {
+        def antiNodesForAntennas(p1: Position, p2: Position): Iterable[Position] = Iterable(p1 * 2 - p2, p2 * 2 - p1).filter(inGrid)
+        def antiNodesForFrequency(frequency: Char): Set[Position] = select2(antennas(frequency)).flatMap(tupled(antiNodesForAntennas)).toSet
+        antennas.keys.flatMap(antiNodesForFrequency).toSet
+    }
+    
+    val harmonics: Set[Position] = {
+        def stepUntilEndOfGrid(position: Position, step: Position): List[Position] = position match {
+            case _ if inGrid(position) => position :: stepUntilEndOfGrid(position + step, step)
+            case _ => Nil
+        }
+        def harmonicsInDirection(p1: Position, p2: Position): Iterable[Position] = stepUntilEndOfGrid(p1, p2 - p1)
+        def harmonicsForFrequency(frequency: Char): Set[Position] = select2(antennas(frequency)).flatMap(tupled(harmonicsInDirection)).toSet
+        antennas.keys.flatMap(harmonicsForFrequency).toSet
+    }
+    
+    
+    println(antiNodes.size)
+    println(harmonics.size)
+  
+    //""";
 }
 /*
 %endif
