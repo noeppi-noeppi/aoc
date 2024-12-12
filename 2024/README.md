@@ -4,3 +4,4 @@
 * [Day 9](day09/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
 * [Day 10](day10/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
 * [Day 11](day11/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
+* [Day 12](day12/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
