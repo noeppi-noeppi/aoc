@@ -15,3 +15,4 @@
 * [Day 20](day20/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
 * [Day 21](day21/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
 * [Day 22](day22/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
+* [Day 23](day23/README.md): [Prolog](https://en.wikipedia.org/wiki/Prolog)
