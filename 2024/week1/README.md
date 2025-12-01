@@ -9,6 +9,6 @@ This is a [Polyglot](https://en.wikipedia.org/wiki/Polyglot_(computing)) file so
 * [Day 5](https://adventofcode.com/2024/day/5): [Ruby](https://en.wikipedia.org/wiki/Ruby_(programming_language))
 * [Day 6](https://adventofcode.com/2024/day/6): [Perl](https://en.wikipedia.org/wiki/Perl)
 * [Day 7](https://adventofcode.com/2024/day/7): [Java](https://en.wikipedia.org/wiki/Java_(programming_language))
-* [Day 8](https://adventofcode.com/2024/day/7): [Scala](https://en.wikipedia.org/wiki/Scala_(programming_language))
+* [Day 8](https://adventofcode.com/2024/day/8): [Scala](https://en.wikipedia.org/wiki/Scala_(programming_language))
 
 The program can be found [here](solution).
