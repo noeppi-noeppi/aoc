@@ -2,3 +2,4 @@
 
 * [Day 1](day01/README.md): [Java](https://en.wikipedia.org/wiki/Java_(programming_language)) without using semicolons
 * [Day 2](day02/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
+* [Day 3](day03/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)

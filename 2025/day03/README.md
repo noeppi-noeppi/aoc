@@ -1,4 +1,4 @@
-# [Advent of Code 2025 Day 2](https://adventofcode.com/2025/day/2)
+# [Advent of Code 2025 Day 3](https://adventofcode.com/2025/day/3)
 
 Written in [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL).
 
