@@ -5,3 +5,4 @@
 * [Day 3](day03/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
 * [Day 4](day04/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
 * [Day 5](day05/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
+* [Day 6](day06/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
