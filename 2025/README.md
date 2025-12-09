@@ -8,3 +8,4 @@
 * [Day 6](day06/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
 * [Day 7](day07/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
 * [Day 8](day08/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
+* [Day 9](day09/README.md): [PostgreSQL](https://en.wikipedia.org/wiki/PostgreSQL)
